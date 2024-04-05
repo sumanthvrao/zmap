@@ -218,7 +218,7 @@ add_custom_target(manpages ronn "${CMAKE_CURRENT_SOURCE_DIR}/zmap.1.ronn" --orga
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
 )
 
-add_executable(zmap ${SOURCES})
+add_executable(zmap-dev ${SOURCES})
 add_executable(zblocklist ${ZBLSOURCES})
 add_executable(ziterate ${ZITSOURCES})
 add_executable(ztee ${ZTEESOURCES})
@@ -231,7 +231,7 @@ else()
 endif()
 
 target_link_libraries(
-    zmap
+    zmap-dev
     zmaplib
     ${PFRING_LIBRARIES}
     pcap gmp m unistring
@@ -270,7 +270,7 @@ target_link_libraries(
 # Install binary
 install(
     TARGETS
-    zmap
+    zmap-dev
     zblocklist
     ziterate
     ztee
