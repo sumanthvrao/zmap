@@ -134,14 +134,14 @@ add_subdirectory(src)
 
 # Install conf files
 if(RESPECT_INSTALL_PREFIX_CONFIG)
-    set(CONFIG_DESTINATION "etc/zmap")
+    set(CONFIG_DESTINATION "etc/zmap-dev")
 else()
-    set(CONFIG_DESTINATION "/etc/zmap")
+    set(CONFIG_DESTINATION "/etc/zmap-dev")
 endif()
 
 FILE(GLOB CONF_FILES "${PROJECT_SOURCE_DIR}/conf/*")
 
-message(STATUS "Default ZMap configuration file location is /etc/zmap")
+message(STATUS "Default ZMap configuration file location is /etc/zmap-dev")
 foreach(EACH_CONF ${CONF_FILES})
     get_filename_component(CONF_BASENAME ${EACH_CONF} NAME)
     message(STATUS "Checking if ${CONF_BASENAME} exists there...")
@@ -151,7 +151,7 @@ foreach(EACH_CONF ${CONF_FILES})
         message(WARNING "FORCE_CONF_INSTALL will overwrite any existing configuration files")
         install(FILES ${EACH_CONF} DESTINATION ${CONFIG_DESTINATION})
     else()
-        message(WARNING "Existing configuration file detected at /etc/zmap/${CONF_BASENAME}, ${CONF_BASENAME} from sources will NOT be installed. Please check and install manually!")
+        message(WARNING "Existing configuration file detected at /etc/zmap-dev/${CONF_BASENAME}, ${CONF_BASENAME} from sources will NOT be installed. Please check and install manually!")
     endif()
 endforeach()
 
